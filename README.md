@@ -73,3 +73,8 @@ Windows:
 [windows-amd64.exe](https://agents.triggercmd.com/triggercmd-mcp/triggercmd-mcp-windows-amd64.exe)
 
 [windows-arm64.exe](https://agents.triggercmd.com/triggercmd-mcp/triggercmd-mcp-windows-arm64.exe)
+
+NOTE: On Mac and Linux, you'll need to make the binary executable with a command like this:
+```
+chmod +x triggercmd-mcp-darwin-arm64
+```
