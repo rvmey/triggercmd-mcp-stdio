@@ -122,6 +122,7 @@ func runCommand(ctx context.Context, _ *mcp.CallToolRequest, in runInput) (*mcp.
 		"command":  in.Command,
 		"computer": in.Computer,
 		"params":   in.Parameters,
+		"sender":   "MCP",
 	}
 	body, _ := json.Marshal(payload)
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, bytes.NewReader(body))
