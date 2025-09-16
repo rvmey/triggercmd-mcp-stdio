@@ -78,3 +78,7 @@ NOTE: On Mac and Linux, you'll need to make the binary executable with a command
 ```
 chmod +x triggercmd-mcp-darwin-arm64
 ```
+
+## Demo
+
+[![TRIGGERcmd MCP Server](https://img.youtube.com/vi/4WSN52Optjk/0.jpg)](https://www.youtube.com/watch?v=4WSN52Optjk "TRIGGERcmd MCP Server")
