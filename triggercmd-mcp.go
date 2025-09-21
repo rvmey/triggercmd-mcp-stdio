@@ -151,6 +151,8 @@ func runCommand(ctx context.Context, _ *mcp.CallToolRequest, in runInput) (*mcp.
 }
 
 func main() {
+	// Ensure logs go to stderr so stdout remains clean for MCP stdio protocol
+	log.SetOutput(os.Stderr)
 	log.Println("TriggerCMD MCP Server starting up...")
 	server := mcp.NewServer(&mcp.Implementation{Name: "triggercmd", Version: "1.0.0"}, &mcp.ServerOptions{HasTools: true})
 
