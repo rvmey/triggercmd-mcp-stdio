@@ -5,6 +5,31 @@ Local stdio MCP server for TRIGGERcmd
 
 ![Claude Desktop using TRIGGERcmd MCP server](Claude_Desktop_using_TRIGGERcmd_MCP_server.png)
 
+## Features
+
+This MCP server provides both general command management tools and **dynamic command-specific tools**:
+
+### Base Tools
+- `list_commands` - List all available TRIGGERcmd commands across your computers
+- `run_command` - Run any specific command by computer and command name
+
+### Dynamic Command Tools
+The server automatically creates individual MCP tools for each of your TRIGGERcmd commands that have an `mcpToolDescription` field set. These tools:
+
+- Are named using the pattern `run_{computer}_{command}` (sanitized for MCP compatibility)
+- Use the `mcpToolDescription` as the tool description for better AI understanding
+- Accept optional parameters if the command supports them
+- Provide a more intuitive interface than the generic `run_command` tool
+
+For example, if you have a command named "lights" on computer "office" with `mcpToolDescription` set to "Control the office lights - accepts colors (red, blue, green, white) or on/off", the server will automatically create a tool named `run_office_lights` with that description.
+
+### Setting mcpToolDescription
+To enable dynamic tools for your commands:
+1. Log into your TRIGGERcmd account
+2. Edit the commands you want to expose as individual MCP tools  
+3. Set the `mcpToolDescription` field with a clear description of what the command does and how to use parameters
+4. Restart the MCP server to pick up the changes
+
 ## Authentication
 
 If the TRIGGERCMD_TOKEN environment variable is set, it will use that, otherwise it will try to read the token from your ~/.TRIGGERcmdData/token.tkn file in your user's home directory.
