@@ -51,8 +51,10 @@ Prompt 3: Turn the lights in my office off.
 
 ## Usage
 
+### Option 1: Direct Binary
+
 If using Claude Desktop, add an entry like this to your claude_desktop_config.json file: 
-```
+```json
 {
   "mcpServers": {
     "triggercmd": {
@@ -63,7 +65,7 @@ If using Claude Desktop, add an entry like this to your claude_desktop_config.js
 ```
 
 If using VS Code, add an entry like this to your mcp.json file:
-```
+```json
 {
 	"servers": {
 		"triggercmd": {
@@ -71,6 +73,43 @@ If using VS Code, add an entry like this to your mcp.json file:
 			"command": "C:\\Users\\johndoe\\Downloads\\triggercmd-mcp-windows-amd64.exe"
 		}
 	}
+}
+```
+
+### Option 2: Docker Container
+
+The server is also available as a Docker container. See the [docker/README.md](docker/README.md) for detailed setup instructions.
+
+**Claude Desktop with Docker:**
+```json
+{
+  "mcpServers": {
+    "triggercmd": {
+      "command": "docker",
+      "args": [
+        "run", "--rm", "-i",
+        "-v", "/home/user/.TRIGGERcmdData/token.tkn:/home/triggercmd/.TRIGGERcmdData/token.tkn:ro",
+        "triggercmd-mcp:latest"
+      ]
+    }
+  }
+}
+```
+
+**VS Code with Docker:**
+```json
+{
+  "servers": {
+    "triggercmd": {
+      "type": "stdio", 
+      "command": "docker",
+      "args": [
+        "run", "--rm", "-i",
+        "-v", "/home/user/.TRIGGERcmdData/token.tkn:/home/triggercmd/.TRIGGERcmdData/token.tkn:ro",
+        "triggercmd-mcp:latest"
+      ]
+    }
+  }
 }
 ```
 ## Downloads

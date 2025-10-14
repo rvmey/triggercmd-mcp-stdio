@@ -1,0 +1,42 @@
+# Docker ignore file for TRIGGERcmd MCP Server
+# Ignore unnecessary files when building the Docker image
+
+# Binaries (we build in Docker)
+binaries/
+*.exe
+
+# Development files
+.git/
+.gitignore
+*.md
+test-*.md
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker files (avoid recursion)
+docker/
+
+# Log files
+*.log
+
+# Test files
+*_test.go
+
+# Example configurations
+*.example.*
+
+# Screenshots/images
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Temporary files
+tmp/
+temp/
