@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  triggercmd-mcp:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: triggercmd-mcp:latest
+    container_name: triggercmd-mcp-server
+    
+    # Environment variables for TRIGGERcmd token
+    environment:
+      # Option 1: Set token via environment variable
+      # TRIGGERCMD_TOKEN: "your-token-here"
+      
+      # Option 2: Use bind mount for token file (recommended)
+      HOME: /home/triggercmd
+    
+    # Volume mounts
+    volumes:
+      # Mount token file from host (recommended approach)
+      # Uncomment and adjust path to your actual token file:
+      # - ~/.TRIGGERcmdData/token.tkn:/home/triggercmd/.TRIGGERcmdData/token.tkn:ro
+      
+      # OR mount entire .TRIGGERcmdData directory:
+      # - ~/.TRIGGERcmdData:/home/triggercmd/.TRIGGERcmdData:ro
+      []
+    
+    # Stdin/stdout for MCP protocol
+    stdin_open: true
+    tty: true
+    
+    # Security settings
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    
+    # Resource limits (adjust as needed)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Network mode (none since we only use stdio)
+    network_mode: none

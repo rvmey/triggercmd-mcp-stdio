@@ -4,9 +4,11 @@ This directory contains Docker configuration files to build and run the TRIGGERc
 
 ## Files
 
-- `Dockerfile` - Multi-stage build configuration for the MCP server
+- `../Dockerfile` - Multi-stage build configuration for the MCP server (in repository root)
+- `../dockerignore` - Files to exclude from the Docker build context (in repository root)
+- `docker-compose.yml` - Docker Compose configuration with volume mounts and security settings
 - `build.sh` - Build script to create the Docker image
-- `.dockerignore` - Files to exclude from the Docker build context
+- `README.md` - This documentation file
 
 ## Building the Image
 
@@ -19,7 +21,7 @@ cd docker
 ### Option 2: Manual build
 ```bash
 # From the project root directory
-docker build -t triggercmd-mcp:latest -f docker/Dockerfile .
+docker build -t triggercmd-mcp:latest .
 ```
 
 ## Running the Container

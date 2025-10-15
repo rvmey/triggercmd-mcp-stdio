@@ -5,11 +5,11 @@ set -e
 
 echo "Building TRIGGERcmd MCP Server Docker Image..."
 
-# Change to the parent directory (where go.mod is located)
+# Change to the parent directory (where go.mod and Dockerfile are located)
 cd "$(dirname "$0")/.."
 
 # Build the Docker image
-docker build -t triggercmd-mcp:latest -f docker/Dockerfile .
+docker build -t triggercmd-mcp:latest .
 
 echo "Docker image built successfully!"
 echo ""
