@@ -80,7 +80,7 @@ If using VS Code, add an entry like this to your mcp.json file:
 
 The server is also available as a Docker container. See the [docker/README.md](docker/README.md) for detailed setup instructions.
 
-**Claude Desktop with Docker:**
+**Claude Desktop with Docker and mounted token file:**
 ```json
 {
   "mcpServers": {
@@ -88,7 +88,7 @@ The server is also available as a Docker container. See the [docker/README.md](d
       "command": "docker",
       "args": [
         "run", "--rm", "-i",
-        "-v", "/home/user/.TRIGGERcmdData/token.tkn:/home/triggercmd/.TRIGGERcmdData/token.tkn:ro",
+        "-v", "/home/your_user/.TRIGGERcmdData/token.tkn:/home/triggercmd/.TRIGGERcmdData/token.tkn:ro",
         "triggercmd-mcp:latest"
       ]
     }
@@ -96,7 +96,7 @@ The server is also available as a Docker container. See the [docker/README.md](d
 }
 ```
 
-**VS Code with Docker:**
+**VS Code with Docker and Environment Variable:**
 ```json
 {
   "servers": {
@@ -105,7 +105,7 @@ The server is also available as a Docker container. See the [docker/README.md](d
       "command": "docker",
       "args": [
         "run", "--rm", "-i",
-        "-v", "/home/user/.TRIGGERcmdData/token.tkn:/home/triggercmd/.TRIGGERcmdData/token.tkn:ro",
+        "-e", "TRIGGERCMD_TOKEN=your-token-here",
         "triggercmd-mcp:latest"
       ]
     }
