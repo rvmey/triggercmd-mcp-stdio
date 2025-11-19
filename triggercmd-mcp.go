@@ -85,6 +85,7 @@ func fetchCommands() ([]Command, error) {
 		return nil, err
 	}
 	req.Header.Set("Authorization", "Bearer "+token)
+	req.Header.Set("User-Agent", "triggercmd-mcp-stdio/1.0.1")
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
@@ -205,6 +206,7 @@ func runCommand(ctx context.Context, _ *mcp.CallToolRequest, in runInput) (*mcp.
 	}
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", "Bearer "+token)
+	req.Header.Set("User-Agent", "triggercmd-mcp-stdio/1.0.1")
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return nil, nil, err
@@ -229,7 +231,7 @@ func main() {
 	log.SetOutput(os.Stderr)
 	log.Println("TriggerCMD MCP Server starting up...")
 
-	server := mcp.NewServer(&mcp.Implementation{Name: "triggercmd", Version: "1.0.0"}, &mcp.ServerOptions{HasTools: true})
+	server := mcp.NewServer(&mcp.Implementation{Name: "triggercmd", Version: "1.0.1"}, &mcp.ServerOptions{HasTools: true})
 
 	// Register base tools
 	mcp.AddTool(server, &mcp.Tool{Name: "list_commands", Description: "List available TriggerCMD commands"}, listCommands)
